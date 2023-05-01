@@ -57,6 +57,9 @@ function generateOddBinaries(n) {
     }
     return queue
 }
+console.time("generate")
+console.log(generateOddBinaries(2000))
+console.timeEnd("generate")
 
 
 // Question 5
@@ -64,6 +67,22 @@ function generateOddBinaries(n) {
 // 9, -3, 5, 2, 6, 8, -6, 1, 3
 
 function quickSortArr(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    
+    let pivot = arr[0];
+    let leftArr = [];
+    let rightArr = [];
 
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+          leftArr.push(arr[i]);
+        } else {
+          rightArr.push(arr[i]);
+        }
+    }
+
+    return [...quickSortArr(leftArr), pivot, ...quickSortArr(rightArr)];
 }
-quickSortArr([9, -3, 5, 2, 6, 8, -6, 1, 3])
+console.log(quickSortArr([9, -3, 5, 2, 6, 8, -6, 1, 3]))
